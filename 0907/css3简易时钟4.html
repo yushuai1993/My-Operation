@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clock{
+            width: 200px;
+            height: 200px;
+            border: 5px solid #000;
+            margin: 100px auto;
+            border-radius: 50%;
+            position: relative;
+        }
+        .hou{
+            width: 6px;
+            height: 60px;
+            background: #000;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 45px;
+            margin-left:-5px;
+            -webkit-transform-origin:bottom;
+        }
+        .min{
+            width: 4px;
+            height: 70px;
+            background: #000;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 35px;
+            margin-left:-3px;
+            -webkit-transform-origin:bottom;
+        }
+        .sec{
+            width: 2px;
+            height: 90px;
+            background: #f00;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            margin-left:-2px;
+            -webkit-transform-origin:bottom;
+        }
+        .clock span{
+            position: absolute;
+            width: 4px;
+            height: 6px;
+            background: #000;
+            left: 50%;
+            top: 0;
+            margin-left: -2px;
+            -webkit-transform-origin:center 100px;
+        }
+        .clock span.big_scale{
+            width: 6px;
+            height: 10px;
+            margin-left: -3px;
+        }
+        .big_scale em{
+            position:absolute;
+            top:8px;
+            left:50%;
+            font-style:normal;
+            width:24px;
+            margin-left:-12px;
+            text-align:center;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oClock = document.querySelector('.clock');
+            var oHou = document.querySelector('.hou');
+            var oMin = document.querySelector('.min');
+            var oSec = document.querySelector('.sec');
+            //创建刻度
+            var N = 60;
+            for(var i = 0; i< N;i++){
+                var oS = document.createElement('span');
+                oS.style.WebkitTransform = 'rotate('+i*6+'deg)';
+                if(i%5==0){
+                    oS.className = 'big_scale';
+                    oS.innerHTML = '<em>'+(i/5||12)+'</em>';
+                    var oEm = oS.children[0];
+                    oEm.style.WebkitTransform = 'rotate ('+-i*6+'deg)';
+                }
+
+                oClock.appendChild(oS);
+            }
+
+            function show(){
+                    var oDate = new Date();
+                    var h = oDate.getHours();
+                    var m = oDate.getMinutes();
+                    var s = oDate.getSeconds();
+
+                    oHou.style.WebkitTransform = 'rotate('+h*30+'deg)';
+                    oMin.style.WebkitTransform = 'rotate('+m*6+'deg)';
+                    oSec.style.WebkitTransform = 'rotate('+s*6+'deg)';
+            }
+            show()
+            setInterval(show,1000);
+        };
+    </script>
+</head>
+<body>
+    <div class="clock">
+        <div class="hou"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clock{
+            width: 200px;
+            height: 200px;
+            border: 5px solid #000;
+            margin: 100px auto;
+            border-radius: 50%;
+            position: relative;
+        }
+        .hou{
+            width: 6px;
+            height: 60px;
+            background: #000;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 45px;
+            margin-left:-5px;
+        }
+        .min{
+            width: 4px;
+            height: 70px;
+            background: #000;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 35px;
+            margin-left:-3px;
+        }
+        .sec{
+            width: 2px;
+            height: 90px;
+            background: #f00;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            margin-left:-2px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oClock = document.querySelector('.clock');
+            var oHou = document.querySelector('.hou');
+            var oMin = document.querySelector('.min');
+            var oSec = document.querySelector('.sec');
+
+            setInterval(function(){
+                var oDate = new Date();
+                var h = oDate.getHours();
+                var m = oDate.getMinutes();
+                var s = oDate.getSeconds();
+
+                oHou.style.WebkitTransform = 'rotate('+h*30+'deg)';
+                oMin.style.WebkitTransform = 'rotate('+m*6+'deg)';
+                oSec.style.WebkitTransform = 'rotate('+s*6+'deg)';
+            },1000);
+        };
+    </script>
+</head>
+<body>
+    <div class="clock">
+        <div class="hou"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+    </div>
+</body>
+</html>

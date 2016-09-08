@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            margin: 100px auto;
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+            line-height:50px;
+            font-size:50px;
+            text-align:center;
+            -webkit-background-clip: text;
+            background-color: #19385c;
+            background:-webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 30%, #aff0ff 50%, rgba(0, 0, 0, 0.6) 70%);
+            background-blend-mode: hard-light;
+            background-size: 200%;
+            -webkit-animation: shine 1s infinite;
+        }
+        @-webkit-keyframes shine {
+            from {background-position: 100%;}
+            to {background-position: 0;}
+        }
+    </style>
+</head>
+<body>
+<p>滑动解锁</p>
+</body>
+</html>
