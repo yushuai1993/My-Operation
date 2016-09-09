@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width:700px;
+        height:400px;
+        background:url(img/2.jpg) no-repeat;
+        margin:100px auto;
+        position:relative;
+    }
+    .box span{
+        position:absolute;
+        top:0;
+        left:0;
+        background:url(img/1.jpg) no-repeat;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var oBox = document.querySelector('.box');
+        var R = 7,
+            C = 4;
+        for(var i = 0; i< R;i++){
+            for(var j = 0; j <C; j++){
+                var oS = document.createElement('span');
+                oS.style.width = oBox.offsetWidth/C+'px';
+                oS.style.height = oBox.offsetHeight/R+'px';
+                oBox.appendChild(oS);
+                oS.style.left = j*oS.offsetWidth+'px';
+                oS.style.top = i*oS.offsetHeight+'px';
+                oS.style.backgroundPosition = -j*oS.offsetWidth+'px -'+i*oS.offsetHeight+'px';
+            }
+        }
+    };
+</script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
