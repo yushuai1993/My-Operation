@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+.tab{
+	width:200px;
+}
+.tab input{
+	background:#ccc;
+}
+.tab input.on{
+	background:red;
+}
+.tab div{
+	width:200px;
+	height:200px;
+	background:#ccc;
+	display:none;
+}
+.tab div.on{
+	display:block;
+}
+</style>
+<script>
+window.onload=function(){
+	var aBtn = document.querySelectorAll('.tab input');
+	var aDiv = document.querySelectorAll('.tab div');
+	var iNow = localStorage.iNow||0;
+	tab();
+	for(var i=0;i<aBtn.length;i++){
+		;(function(index){
+			aBtn[i].onclick=function(){
+				iNow = index;
+				tab();
+			};
+		})(i);
+	}
+	function tab(){
+		localStorage.iNow = iNow;
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].className = '';
+			aDiv[i].className = '';
+		}
+		aBtn[iNow].className = 'on';
+		aDiv[iNow].className = 'on';
+	}
+};
+</script>
+</head>
+
+<body>
+<div class="tab">
+	<input type="button" value="aaa" class="on" />
+	<input type="button" value="bbb" />
+	<input type="button" value="ccc" />
+	<div class="on">111</div>
+	<div>222</div>
+	<div>333</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

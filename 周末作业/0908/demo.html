@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+	list-style: none
+}
+html,body{
+	height:100%;
+}
+body{
+	background:url(bg.jpg) no-repeat;
+	background-size:100%;
+}
+ul{
+	overflow:hidden;
+	margin:100px auto;
+}
+li{
+	float:left;
+	width:200px;
+	height:200px;
+	margin:50px;
+	position:relative;
+}
+li .pan{
+	width:194px;
+	height:194px;
+	background:url(cd.png) no-repeat;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-97px;
+	margin-top:-97px;
+	-webkit-transition:1s all ease;
+}
+li .pack{
+	width:200px;
+	height:200px;
+	background:url(img_01.jpg) no-repeat;
+	position:absolute;
+	left:0;
+	top:0;
+	-webkit-transition:1s all ease;
+}
+li:hover .pack{
+	-webkit-transform:translate(0,40px);
+}
+li:hover .pan{
+	-webkit-transform:translate(0,-40px) rotate(180deg);
+}
+</style>
+<script>
+</script>
+</head>
+
+<body>
+	<ul>
+		<li>
+			<span class="pan"></span>
+			<em class="pack"></em>
+		</li>
+		<li>
+			<span class="pan"></span>
+			<em class="pack"></em>
+		</li>
+		<li>
+			<span class="pan"></span>
+			<em class="pack"></em>
+		</li>
+		<li>
+			<span class="pan"></span>
+			<em class="pack"></em>
+		</li>
+	</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

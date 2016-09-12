@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: #f00;
+            margin: 100px auto;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.querySelector('.box');
+            oBox.onclick = function(){
+                oBox.style.  WebkitTransition = '1s all ease';
+                oBox.style.  MozTransition = '1s all ease';
+                oBox.style.  msTransition = '1s all ease';
+                oBox.style.  OTransition = '1s all ease';
+                oBox.style.  Transition = '1s all ease';
+                oBox.style.width = '500px';
+            };
+        };
+    </script>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

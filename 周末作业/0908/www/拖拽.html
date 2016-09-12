@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+#box{
+	width:200px;
+	height:200px;
+	background:red;
+	position:absolute;
+	top:0;
+	left:0;
+}
+</style>
+<script>
+window.onload=function(){
+	var oBox = document.getElementById('box');
+	oBox.onmousedown=function(ev){
+		var disX = ev.pageX-oBox.offsetLeft;
+		var disY = ev.pageY-oBox.offsetTop;
+		document.onmousemove=function(ev){
+			oBox.style.left = ev.pageX-disX+'px';
+			oBox.style.top = ev.pageY-disY+'px';
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+			var json = {"left":oBox.offsetLeft,"top":oBox.offsetTop};
+			localStorage.oldPost = JSON.stringify(json);
+		};
+		return false;
+	};
+};
+</script>
+</head>
+
+<body>
+	<div id="box"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

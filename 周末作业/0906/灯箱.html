@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        @keyframes abc{
+            from{left:0;}
+            to{left:-113px;}
+        }
+        .box{
+            border: 1px solid #000;
+            width: 113px;
+            height: 400px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .content{
+            width: 400px;
+            height: 400px;
+            background: -webkit-repeating-linear-gradient(-45deg,red 0,red 20px, #fff 20px, #fff 40px ,blue 40px,blue 60px,#fff 60px,#fff 80px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: abc 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="content"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+</style>
+<script>
+	navigator.geolocation.getCurrentPosition(function(pos){
+		document.write('经度：'+pos.coords.longitude+',纬度:'+pos.coords.latitude);
+	},function(){
+		alert('error');
+	});
+</script>
+</head>
+
+<body>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

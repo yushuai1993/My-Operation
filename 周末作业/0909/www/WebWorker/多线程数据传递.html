@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+</style>
+<script>
+var worker = new Worker('2.js');
+worker.postMessage('呵呵呵呵呵呵');
+worker.onmessage = function(ev){
+	alert(ev.data);
+};
+</script>
+</head>
+
+<body>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+*{margin:0; padding:0;}
+#allmap{width:800px; height:600px; margin:0 auto; border:1px solid #000;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script>
+window.onload = function(){
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");         
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+	map.enableScrollWheelZoom(true);
+	map.enableDragging();
+	
+	var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+	walking.search("宏福大厦", "佳木斯");
+};
+</script>
+</head>
+
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

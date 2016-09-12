@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .v-box{
+        width:600px;
+        margin:0 auto;
+    }
+    .v-box video{
+        width:100%;
+    }
+    .cont{
+        width:600px;
+        height:30px;
+        background:rgba(0,0,0,0.5);
+        margin:0 auto;
+    }
+    .btn,.c-box{
+        float:left;
+    }
+    .btn{
+        text-decoration:none;
+        height:30px;
+        line-height:30px;
+        padding:0 5px;
+        color:#fff;
+    }
+    .pro-bar-box{
+        width:200px;
+        height:10px;
+        background:#fff;
+        margin-top:10px;
+        position:relative;
+    }
+    .pro-bar{
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        width:0%;
+        background:pink;
+    }
+    .pro-btn{
+        position:absolute;
+        top:50%;
+        left:0;
+        margin-top:-8px;
+        width:16px;
+        height:16px;
+        border-radius:50%;
+        background:aqua;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var oV = document.querySelector('.v1');
+        var oPlay = document.querySelector('.play_btn');
+        var oPause = document.querySelector('.pause_btn');
+        var oStop = document.querySelector('.stop_btn');
+        var oProBarBox = document.querySelector('.pro-bar-box');
+        var oProBar = document.querySelector('.pro-bar');
+        var oProBtn = document.querySelector('.pro-btn');
+        oPlay.onclick = function(){
+            oV.play();
+        };
+        oPause.onclick = function(){
+            oV.pause();
+        };
+        oStop.onclick = function(){
+            oV.pause();
+            oV.currentTime = 0;
+        };
+        //进度拖拽
+        oProBtn.onmousedown = function(ev){
+            var disX = ev.pageX-oProBtn.offsetLeft;
+            document.onmousemove=function(ev){
+                var l = ev.pageX-disX;
+                if(l<0){
+                    l = 0;
+                }else if(l>oProBarBox.offsetWidth-oProBtn.offsetWidth){
+                    l = oProBarBox.offsetWidth-oProBtn.offsetWidth;
+                }
+                oProBtn.style.left = l+'px';
+
+                var scale = l/(oProBarBox.offsetWidth-oProBtn.offsetWidth);
+                oProBar.style.width = scale*100+'%';
+
+                //当前时间=比例*总时间
+                oV.currentTime = scale*oV.duration;
+            };
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            };
+            return false;
+        };
+
+        oV.ontimeupdate = function(){
+            console.log(oV.currentTime);
+        };
+    };
+</script>
+</head>
+<body>
+<div class="v-box">
+    <video class="v1" src="http://images.sohu.com/ytv/SH/Coke/64036020120714021103.mp4">
+        您的浏览器版本过低，请尽快升级。呵呵。
+    </video>
+</div>
+<div class="cont">
+    <a href="javascript:;" class="btn play_btn">播放</a>
+    <a href="javascript:;" class="btn pause_btn">暂停</a>
+    <a href="javascript:;" class="btn stop_btn">停止</a>
+    <div class="pro-bar-box c-box">
+        <div class="pro-bar"></div>
+        <a href="javascript:;" class="pro-btn"></a>
+    </div>
+    <div class="time-box c-box">00:00/00:00</div>
+    <div class="vul-bar-box c-box">
+        <div class="vul-bar"></div>
+        <a href="javascript:;" class="vul-btn"></a>
+    </div>
+</div>
+</body>
+</html>
